@@ -30,6 +30,7 @@ jobs:
           owner: just-the-docs
           repo: just-the-docs
           excludes: prerelease, draft
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Gemfile
         run: |
