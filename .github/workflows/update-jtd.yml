@@ -59,9 +59,21 @@ jobs:
             Gemfile.lock
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Find issue on failed workflow
+        id: find-issue
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'find-issues'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-state: 'open'
+          title-includes: 'An update failed - more permissions required'
+
+      - run: |
+          echo ${{ steps.find-issue.outputs }}
+
       - name: Create Issue on Failed workflow
         uses: dacbd/create-issue-action@v1.2.1
-        if: ${{ failure() }}
+        if: ${{ failure() && steps.find-issue.outputs.issues }}
         with:
           token: ${{ github.token }}
           title: An update failed - more permissions required
