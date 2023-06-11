@@ -148,6 +148,16 @@ The Github Actions workflow that builds and deploys your site to Github Pages is
           - "docs/**"
     ```
 
+## Allow updates
+
+This template includes a workflow for automated checks on newer versions. It will open a PR in your Repository if there's an update ready.
+
+You must explicitly allow GitHub Actions to create pull requests. This setting can be found in a repository's settings under `Actions > General > Workflow permissions`.
+
+For repositories belonging to an organization, this setting can be managed by admins in organization settings under `Actions > General > Workflow permissions`.
+
+The workflow will create an issue in your repo if it can't create a pull request.
+
 ## Licensing and Attribution
 
 This repository is licensed under the [MIT License]. You are generally free to reuse or extend upon this code as you see fit; just include the original copy of the license (which is preserved when you "make a template"). While it's not necessary, we'd love to hear from you if you do use this template, and how we can improve it for future use!
