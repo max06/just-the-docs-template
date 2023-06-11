@@ -72,7 +72,7 @@ jobs:
           title-includes: 'An update failed - more permissions required'
 
       - run: |
-          echo ${{ steps.find-issue.outputs }}
+          echo ${{ toJson(steps.find-issue.outputs) }}
 
       - name: Create Issue on Failed workflow
         uses: dacbd/create-issue-action@v1.2.1
